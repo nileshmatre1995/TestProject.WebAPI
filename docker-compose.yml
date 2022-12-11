@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  testproject.webapi:
+    image: ${DOCKER_REGISTRY-}testprojectwebapi
+    build:
+      context: .
+      dockerfile: TestProject.WebAPI/Dockerfile
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-CU5-ubuntu-18.04
+    ports:
+      - 1433:1433
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: YourStrong@Passw0rd 
